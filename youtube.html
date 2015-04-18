@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="vendor/videojs-4.12/video-js.css" rel="stylesheet">
+	<script src="vendor/videojs-4.12/video.js"></script>
+    <script src="vendor/videojs-youtube-1.2.10/vjs.youtube.js"></script>
+    <script src="vendor/videojs-contrib-media-sources-0.3.1/videojs-media-sources.js"></script>
+    <script src="vendor/videojs-contrib-hls-0.12.0/videojs.hls.min.js"></script>
+    <script>
+        videojs.options.flash.swf = "vendor/videojs-4.12/video-js.swf";
+    </script>
+</head>
+<body>
+    <h1>Video.JS - HLS and Youtube test</h1>
+    <h2>Youtube - techOrder: ["html5", "flash", "youtube"]</h2>
+    <video id="youtube-player" class="video-js vjs-default-skin" width="640" height="480" controls>
+		<source src="https://www.youtube.com/watch?v=csVpa25iqH0" type="video/youtube">
+	</video>
+	<script>
+		videojs("youtube-player", {techOrder: ["html5", "flash", "youtube"]});
+	</script>
+
+    <h2>HLS - No techOrder</h2>
+    <video id="hls-player-1" class="video-js vjs-default-skin" width="640" height="480" controls>
+		<source src="http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8" type="application/x-mpegURL">
+	</video>
+	<script>
+		videojs("hls-player-1", {});
+	</script>
+
+    <h2>HLS - techOrder: ["html5", "flash", "youtube"]</h2>
+    <video id="hls-player-2" class="video-js vjs-default-skin" width="640" height="480" controls>
+		<source src="http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8" type="application/x-mpegURL">
+	</video>
+	<script>
+		videojs("hls-player-2", {techOrder: ["html5", "flash", "youtube"]});
+	</script>
+</body>
+</html>
