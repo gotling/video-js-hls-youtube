@@ -35,5 +35,13 @@
 	<script>
 		videojs("hls-player-2", {techOrder: ["html5", "flash", "youtube"]});
 	</script>
+
+    <h2>HLS - techOrder: ["hls", "html5", "flash", "youtube"]</h2>
+    <video id="hls-player-3" class="video-js vjs-default-skin" width="640" height="480" controls>
+		<source src="http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8" type="application/x-mpegURL">
+	</video>
+	<script>
+		videojs("hls-player-3", {techOrder: ["hls", "html5", "flash", "youtube"]});
+	</script>
 </body>
 </html>
