@@ -45,8 +45,9 @@
     </script>
 </head>
 <body>
-    <!--
     <h1>Video.JS - Ads and HLS</h1>
+    <p><strong>Description: </strong>When displaying a midroll in a HLS or Youtube video, the player is not correctly
+    restored when the ad is over.</p>
     <h2>MP4</h2>
     <video id="mp4-player" class="video-js vjs-default-skin" width="320" height="240" controls>
 		<source src="http://video-js.zencoder.com/oceans-clip.mp4" type="video/mp4">
@@ -60,14 +61,29 @@
             });
         });
 	</script>
-    -->
 
     <h2>HLS</h2>
-    <video id="hls-player" class="video-js vjs-default-skin" width="320" height="240" controls autoplay>
+    <p>Time is not restored to the length of the content clip and sometimes playback is not started again.</p>
+    <video id="hls-player" class="video-js vjs-default-skin" width="320" height="240" controls>
 		<source src="http://solutions.brightcove.com/jwhisenant/hls/akamai/sintel/akamai-sintel_master.m3u8" type="application/x-mpegURL">
 	</video>
 	<script>
 		videojs("hls-player", {}, function () {
+            player = this;
+            player.myAdPlayer({
+                timeout: 0,
+                debug: true
+            });
+        });
+	</script>
+
+    <h2>Youtube</h2>
+    <p>Stops and looses Video JS skin. Does not continue to play.</p>
+    <video id="youtube-player" class="video-js vjs-default-skin" width="320" height="240" controls>
+		<source src="https://www.youtube.com/watch?v=csVpa25iqH0" type="video/youtube">
+	</video>
+	<script>
+		videojs("youtube-player", {techOrder: ["html5", "flash", "youtube"]}, function () {
             player = this;
             player.myAdPlayer({
                 timeout: 0,

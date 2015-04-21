@@ -1,0 +1,23 @@
+{
+  "name": "video-js-hls-youtube",
+  "version": "1.0.0",
+  "description": "Demonstrate problem with Video JS and plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gotling/video-js-hls-youtube"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gotling/video-js-hls-youtube/issues"
+  },
+  "homepage": "https://github.com/gotling/video-js-hls-youtube",
+  "dependencies": {
+    "connect": "^3.3.5",
+    "serve-static": "^1.9.2"
+  }
+}
