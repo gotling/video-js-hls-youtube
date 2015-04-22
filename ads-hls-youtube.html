@@ -3,7 +3,7 @@
 <head>
     <link href="vendor/videojs-4.12/video-js.css" rel="stylesheet">
     <link href="vendor/videojs-contrib-ads-2.1.0/videojs.ads.css" rel="stylesheet">
-	<script src="vendor/videojs-4.12/video.js"></script>
+    <script src="vendor/videojs-4.12/video.js"></script>
     <script src="vendor/videojs-youtube-1.2.10/vjs.youtube.js"></script>
     <script src="vendor/videojs-contrib-media-sources-0.3.1/videojs-media-sources.js"></script>
     <script src="vendor/videojs-contrib-hls-0.12.0/videojs.hls.min.js"></script>
@@ -11,36 +11,36 @@
     <script>
         videojs.options.flash.swf = "vendor/videojs-4.12/video-js.swf";
 
-    (function() {
-        (function (window, document, vjs) {
-            return vjs.plugin('myAdPlayer', function (options) {
-                var playAd, player, state;
-                player = this;
-                state = {};
+        (function() {
+            (function (window, document, vjs) {
+                return vjs.plugin('myAdPlayer', function (options) {
+                    var playAd, player, state;
+                    player = this;
+                    state = {};
 
-                playAd = function () {
-                    player.ads.startLinearAdMode();
-                    player.src({'src': 'http://techslides.com/demos/sample-videos/small.mp4', 'type': 'video/mp4'});
-                    player.on('ended', function () {
-                        player.ads.endLinearAdMode();
+                    playAd = function () {
+                        player.ads.startLinearAdMode();
+                        player.src({'src': 'http://techslides.com/demos/sample-videos/small.mp4', 'type': 'video/mp4'});
+                        player.on('ended', function () {
+                            player.ads.endLinearAdMode();
+                        });
+                    };
+
+                    player.ads(options);
+
+                    player.on('timeupdate', function () {
+                        if (state.midrollPlayed) {
+                            return;
+                        }
+
+                        if (player.currentTime() > 5) {
+                            state.midrollPlayed = true;
+                            playAd();
+                        }
                     });
-                };
-
-                player.ads(options);
-
-                player.on('timeupdate', function () {
-                    if (state.midrollPlayed) {
-                        return;
-                    }
-
-                    if (player.currentTime() > 5) {
-                        state.midrollPlayed = true;
-                        playAd();
-                    }
                 });
-            });
-        })(window, document, videojs);
-    }).call(this);
+            })(window, document, videojs);
+        }).call(this);
     </script>
 </head>
 <body>
