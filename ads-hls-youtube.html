@@ -12,8 +12,6 @@
         videojs.options.flash.swf = "vendor/videojs-4.12/video-js.swf";
 
     (function() {
-        var player;
-
         (function (window, document, vjs) {
             return vjs.plugin('myAdPlayer', function (options) {
                 var playAd, player, state;
@@ -21,14 +19,15 @@
                 state = {};
 
                 playAd = function () {
-                    state.current = 0;
                     player.ads.startLinearAdMode();
                     player.src({'src': 'http://techslides.com/demos/sample-videos/small.mp4', 'type': 'video/mp4'});
                     player.on('ended', function () {
                         player.ads.endLinearAdMode();
                     });
                 };
+
                 player.ads(options);
+
                 player.on('timeupdate', function () {
                     if (state.midrollPlayed) {
                         return;
@@ -45,7 +44,7 @@
     </script>
 </head>
 <body>
-    <h1>Video.JS - Ads and HLS</h1>
+    <h1>Video.JS - Ads, HLS and Youtube</h1>
     <p><strong>Description: </strong>When displaying a midroll in a HLS or Youtube video, the player is not correctly
     restored when the ad is over.</p>
     <h2>MP4</h2>
